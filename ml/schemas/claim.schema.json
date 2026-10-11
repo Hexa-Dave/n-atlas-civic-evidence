@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://n-atlas.example/schemas/claim.schema.json",
+  "title": "ExtractedClaim",
+  "type": "object",
+  "required": ["claim_text", "source_segment_id", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": { "type": "string" },
+    "claim_text": { "type": "string", "minLength": 1 },
+    "claim_type": {
+      "type": "string",
+      "enum": ["statement", "allegation", "observation", "procedural"]
+    },
+    "speaker": { "type": ["string", "null"] },
+    "source_segment_id": { "type": "string" },
+    "audio_start": { "type": ["number", "null"] },
+    "audio_end": { "type": ["number", "null"] },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["unverified", "accepted", "edited", "rejected", "flagged"]
+    }
+  }
+}

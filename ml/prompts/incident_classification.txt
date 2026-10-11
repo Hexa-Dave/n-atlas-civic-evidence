@@ -1,0 +1,11 @@
+Classify a civic incident report into one incident_type, matching
+schemas/incident.schema.json.
+
+Rules:
+- Use only information present in the report.
+- If the type is unclear, use "other".
+- Return status "unverified" and a confidence between 0 and 1.
+- Do not give legal advice or speculate about intent.
+
+Report text:
+{{report_text}}

@@ -1,0 +1,17 @@
+# Base N-ATLAS model configuration. Pin an exact model id and version; a
+# generic wrapper is not proof of N-ATLAS integration.
+model:
+  id: ${N_ATLAS_MODEL_ID}
+  version: "pin-exact-version"
+  base_url: ${N_ATLAS_BASE_URL}
+  access: api
+
+inference:
+  temperature: 0.0
+  max_tokens: 2048
+  timeout_seconds: 60
+
+tasks:
+  - claim_extraction
+  - incident_classification
+  - civic_guidance

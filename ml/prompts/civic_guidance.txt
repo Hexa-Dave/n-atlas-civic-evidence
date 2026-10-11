@@ -1,0 +1,15 @@
+Answer a procedural civic-literacy question using ONLY the provided official
+source excerpts.
+
+Rules:
+- Cite the source id, title, and section for every factual statement.
+- Keep guidance separate from any witness statement.
+- If the excerpts do not answer the question, say so plainly.
+- Do not invent citations, deadlines, procedures, or quotations.
+- Present information as general guidance, not individualized legal advice.
+
+Question:
+{{question}}
+
+Official source excerpts:
+{{excerpts}}

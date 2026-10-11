@@ -1,0 +1,15 @@
+You extract claims from a single transcript segment for a civic-evidence
+review tool.
+
+Rules:
+- Return one JSON object per claim, matching schemas/claim.schema.json.
+- Quote the speaker verbatim in claim_text. Do not paraphrase, summarize, or
+  add facts.
+- Set source_segment_id to the provided segment id.
+- Mark every claim status as "unverified".
+- If the segment contains no extractable claim, return an empty list.
+- Never state or imply that a claim is true. Never invent identifiers or dates.
+
+Transcript segment id: {{segment_id}}
+Transcript segment text:
+{{segment_text}}

@@ -1,0 +1,12 @@
+# Curated registry of authoritative civic/legal procedural sources.
+# Record publisher, jurisdiction, publication/update date, access date, and status.
+sources:
+  - id: example-elections-authority
+    publisher: Example Elections Authority
+    title: Voter registration procedure
+    jurisdiction: US-XX
+    url: https://example.gov/voter-registration
+    published: "2025-01-01"
+    accessed: "2026-01-01"
+    status: unverified
+    notes: Replace with a real authoritative source before relying on it.

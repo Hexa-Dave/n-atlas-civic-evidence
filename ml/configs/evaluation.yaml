@@ -1,0 +1,11 @@
+test_set: data/benchmark/manifest.json
+output_dir: artifacts/evaluation-reports
+metrics:
+  - precision
+  - recall
+  - f1
+  - source_attribution_rate
+  - unsupported_claim_rate
+compare:
+  - base
+  - finetuned

@@ -1,0 +1,5 @@
+<svg width="160" height="40" viewBox="0 0 160 40" role="img" aria-label="N-ATLAS Civic Evidence" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="6" width="28" height="28" rx="6" fill="#1f4e79" />
+  <path d="M10 28V12l12 16V12" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="40" y="26" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1f4e79">N-ATLAS</text>
+</svg>

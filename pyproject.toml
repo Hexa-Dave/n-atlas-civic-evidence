@@ -1,0 +1,19 @@
+# Repository-wide tooling configuration for N-ATLAS Civic Evidence.
+# The backend package is defined separately in backend/pyproject.toml.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["data", "artifacts", "apps/web"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests", "ml/tests", "civic_knowledge/evaluation"]
+addopts = "-q"
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

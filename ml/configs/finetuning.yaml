@@ -1,0 +1,12 @@
+base_model: ${N_ATLAS_MODEL_ID}
+method: lora
+dataset:
+  train: data/splits/train.jsonl
+  validation: data/splits/validation.jsonl
+hyperparameters:
+  learning_rate: 1.0e-4
+  epochs: 3
+  batch_size: 8
+  lora_rank: 16
+output_dir: artifacts/model-adapters
+seed: 17

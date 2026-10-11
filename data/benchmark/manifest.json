@@ -1,0 +1,9 @@
+{
+  "name": "civic-evidence-benchmark",
+  "version": "0.1.0",
+  "description": "Held-out, human-verified evaluation set. Keep separate from training and tuning data.",
+  "provenance": "synthetic",
+  "created": "2026-01-01",
+  "fields": ["case_id", "transcript_id", "gold_claims", "gold_incident_labels"],
+  "samples": []
+}
