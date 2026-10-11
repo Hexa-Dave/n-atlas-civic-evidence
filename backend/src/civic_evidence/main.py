@@ -6,11 +6,13 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from civic_evidence.api.router import api_router
 from civic_evidence.config import get_settings
+from civic_evidence.dependencies import initialize_database
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     get_settings()  # fail fast when configuration is invalid
+    initialize_database()
     yield
 
 

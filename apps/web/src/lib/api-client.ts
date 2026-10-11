@@ -32,7 +32,41 @@ export async function apiFetch<T>(path: string, init: RequestInit = {}): Promise
   if (response.status === 204) {
     return undefined as T;
   }
+
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) {
+    return undefined as T;
+  }
+
   return (await response.json()) as T;
+}
+
+export interface CaseResponse {
+  id: string;
+  title: string;
+  description?: string | null;
+  status: string;
+  consent_recorded?: boolean;
+  created_at?: string;
+}
+
+export interface ClaimResponse {
+  id: string;
+  case_id: string;
+  text: string;
+  status: string;
+  source_segment_id?: string | null;
+  confidence?: number | null;
+}
+
+export interface GuidanceResponse {
+  source_id: string;
+  source_title: string;
+  title: string;
+  section: string;
+  excerpt: string;
+  url: string;
+  jurisdiction: string;
 }
 
 export const api = {
@@ -41,4 +75,17 @@ export const api = {
     apiFetch<T>(path, { method: "POST", body: JSON.stringify(body) }),
   patch: <T>(path: string, body: unknown) =>
     apiFetch<T>(path, { method: "PATCH", body: JSON.stringify(body) }),
+};
+
+export const backendApi = {
+  listCases: () => api.get<CaseResponse[]>("/api/v1/cases"),
+  getCase: (id: string) => api.get<CaseResponse>(`/api/v1/cases/${id}`),
+  listClaims: (caseId: string) => api.get<ClaimResponse[]>(`/api/v1/cases/${caseId}/claims`),
+  extractClaims: (caseId: string, transcriptId: string) =>
+    api.post<ClaimResponse[]>(`/api/v1/cases/${caseId}/claims/extract?transcript_id=${encodeURIComponent(transcriptId)}`, {}),
+  searchGuidance: (query: string, jurisdiction?: string) => {
+    const params = new URLSearchParams({ q: query });
+    if (jurisdiction) params.set("jurisdiction", jurisdiction);
+    return api.get<GuidanceResponse[]>(`/api/v1/civic-guidance/search?${params.toString()}`);
+  },
 };

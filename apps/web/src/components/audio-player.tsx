@@ -9,7 +9,7 @@ export interface AudioSegment {
 }
 
 export interface AudioPlayerProps {
-  src: string;
+  src?: string;
   segments?: AudioSegment[];
   onSegmentSelect?: (segmentId: string) => void;
 }
@@ -29,7 +29,17 @@ export function AudioPlayer({ src, segments = [], onSegmentSelect }: AudioPlayer
 
   return (
     <section aria-label="Case audio" className="rounded-lg border p-4">
-      <audio ref={audioRef} controls preload="metadata" src={src} className="w-full" />
+      {src ? (
+        <audio ref={audioRef} controls preload="metadata" src={src} className="w-full" />
+      ) : (
+        <div className="audio-unavailable">
+          <span className="audio-unavailable-icon" aria-hidden="true">♫</span>
+          <div>
+            <strong>Audio preview unavailable</strong>
+            <p>No audio file is connected to this demo case.</p>
+          </div>
+        </div>
+      )}
       {segments.length > 0 ? (
         <ul className="mt-3 space-y-1 text-sm">
           {segments.map((segment) => (

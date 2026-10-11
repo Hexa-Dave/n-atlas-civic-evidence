@@ -32,7 +32,7 @@ export function ReviewPanel({ claimId, status, note, onNoteChange, onDecision, d
           onChange={(event) => onNoteChange?.(event.target.value)}
         />
       </label>
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="review-actions">
         {DECISIONS.map((decision) => (
           <button
             key={decision}

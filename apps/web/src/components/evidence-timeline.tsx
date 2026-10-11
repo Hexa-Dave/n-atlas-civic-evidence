@@ -19,7 +19,7 @@ export function EvidenceTimeline({ events, onEventSelect }: EvidenceTimelineProp
   const ordered = [...events].sort((a, b) => a.occurredAt.localeCompare(b.occurredAt));
 
   return (
-    <section aria-label="Evidence timeline" className="space-y-2">
+    <section aria-label="Evidence timeline" className="timeline-list">
       {ordered.map((event) => (
         <div key={event.id} className="flex gap-3" onClick={() => onEventSelect?.(event.id)}>
           <time className="w-28 shrink-0 text-xs text-muted-foreground">{event.occurredAt}</time>

@@ -10,8 +10,27 @@ export interface SessionUser {
 }
 
 export async function getSession(): Promise<SessionUser | null> {
-  // Replace with a call to the backend session endpoint once implemented.
-  return null;
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const stored = window.localStorage.getItem("civic_evidence_session");
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored) as SessionUser;
+      if (parsed?.id) {
+        return parsed;
+      }
+    } catch {
+      return null;
+    }
+  }
+
+  return {
+    id: "local-dev-user",
+    name: "Local reviewer",
+    roles: ["reviewer", "admin"],
+  };
 }
 
 export function canReview(user: SessionUser | null): boolean {

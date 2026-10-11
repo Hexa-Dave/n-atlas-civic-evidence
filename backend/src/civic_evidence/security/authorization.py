@@ -3,7 +3,14 @@ from fastapi import HTTPException, status
 
 
 def require_case_access(actor: dict, case_id: str) -> None:
-    # Confirm the actor holds an explicit grant for this case.
+    roles = set(actor.get("roles", []))
+    if roles.intersection({"admin", "reviewer"}):
+        return
+
+    case_access = set(actor.get("case_access", []))
+    if str(case_id) in case_access:
+        return
+
     raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized for this case")
 
 

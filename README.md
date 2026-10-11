@@ -44,4 +44,14 @@ This repository structure describes the intended implementation. Do not assume t
 
 See `docs/` for setup and implementation guides. Supply configuration through environment variables; copy `.env.example` to a local `.env` and never commit secrets.
 
+## Production hardening requirements
+
+The backend now enforces a few key production checks before startup:
+- `APP_ENV=production` requires a strong `SECRET_KEY` (32+ characters)
+- demo auth must be disabled in production
+- production requires a non-SQLite database URL
+- explicit, non-wildcard CORS origins are required
+
+This keeps default local-dev behavior usable while preventing accidental unsafe configuration from shipping to production.
+
 Before describing a capability as complete, verify it with tests and record evidence. Document the exact N-ATLAS model/version and access method, dataset provenance, held-out benchmark methodology, base-versus-fine-tuned results, and deployment verification.

@@ -30,7 +30,7 @@ export function TranscriptViewer({ segments, activeSegmentId, onSegmentClick }: 
           <article
             key={segment.id}
             onClick={() => onSegmentClick?.(segment.id)}
-            className={`rounded-md border p-3 ${active ? "border-primary bg-muted/40" : ""}`}
+            className={`transcript-segment rounded-md border p-3 ${active ? "is-active" : ""}`}
           >
             {segment.speaker ? (
               <header className="text-xs font-medium text-muted-foreground">{segment.speaker}</header>
